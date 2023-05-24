@@ -13,6 +13,7 @@ class ShopScreen extends StatefulWidget {
 class _ShopScreenState extends State<ShopScreen> {
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Scaffold(
       body: Stack(
         children: [
@@ -26,7 +27,94 @@ class _ShopScreenState extends State<ShopScreen> {
             child: Column(
               children: [
                 Container(
-                  height: 500,
+                  height: 150,
+                  alignment: Alignment.center,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Container(
+                        width: 50,
+                        height: 50,
+                        padding: const EdgeInsets.all(10),
+                        decoration: const BoxDecoration(
+                            shape: BoxShape.circle, color: Colors.white),
+                        child: SvgPicture.asset(
+                          "assets/images/help.svg",
+                          height: 20,
+                          width: 20,
+                        ),
+                      ),
+                      const SizedBox(
+                        width: 20,
+                      )
+                    ],
+                  ),
+                ),
+                Container(
+                  height: 350,
+                  // padding: EdgeInsets.only(top: 80),
+                  alignment: Alignment.center,
+                  child: PageView(
+                    children: [
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Image.asset(
+                            "assets/images/laptop.png",
+                            width: 200,
+                            height: 200,
+                          ),
+                          // const SizedBox(
+                          //   height: 12,
+                          // ),
+                          Image.asset(
+                            "assets/images/950.png",
+                            fit: BoxFit.cover,
+                            width: 120,
+                            height: 40,
+                          ),
+                        ],
+                      ),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Image.asset(
+                            "assets/images/iphone10.png",
+                            width: 200,
+                            height: 200,
+                          ),
+                          // const SizedBox(
+                          //   height: 12,
+                          // ),
+                          Image.asset(
+                            "assets/images/950.png",
+                            fit: BoxFit.cover,
+                            width: 120,
+                            height: 40,
+                          ),
+                        ],
+                      ),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Image.asset(
+                            "assets/images/camera_60d.png",
+                            width: 200,
+                            height: 200,
+                          ),
+                          // const SizedBox(
+                          //   height: 12,
+                          // ),
+                          Image.asset(
+                            "assets/images/950.png",
+                            fit: BoxFit.cover,
+                            width: 120,
+                            height: 40,
+                          ),
+                        ],
+                      )
+                    ],
+                  ),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -57,6 +145,19 @@ class _ShopScreenState extends State<ShopScreen> {
                       width: 1,
                     ),
                   ],
+                ),
+                const SizedBox(
+                  height: 24,
+                ),
+                Container(
+                  alignment: Alignment.center,
+                  height: 100,
+                  child: Image.asset(
+                    "assets/images/button.png",
+                    width: 200,
+                    height: 200,
+                    fit: BoxFit.contain,
+                  ),
                 )
               ],
             ),
