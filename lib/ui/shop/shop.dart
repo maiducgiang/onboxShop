@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:onbox_shop/ui/list_product/list_product_screen.dart';
 
 class ShopScreen extends StatefulWidget {
   const ShopScreen({super.key});
@@ -11,6 +12,8 @@ class ShopScreen extends StatefulWidget {
 }
 
 class _ShopScreenState extends State<ShopScreen> {
+  PageController controller = PageController();
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -54,64 +57,128 @@ class _ShopScreenState extends State<ShopScreen> {
                   height: 350,
                   // padding: EdgeInsets.only(top: 80),
                   alignment: Alignment.center,
-                  child: PageView(
+                  child: Stack(
                     children: [
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
+                      PageView(
+                        controller: controller,
                         children: [
-                          Image.asset(
-                            "assets/images/laptop.png",
-                            width: 200,
-                            height: 200,
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => ListProductScreen(
+                                          title: "laptop",
+                                        )),
+                              );
+                            },
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Image.asset(
+                                  "assets/images/laptop.png",
+                                  width: 200,
+                                  height: 200,
+                                ),
+                                // const SizedBox(
+                                //   height: 12,
+                                // ),
+                                Image.asset(
+                                  "assets/images/950.png",
+                                  fit: BoxFit.cover,
+                                  width: 120,
+                                  height: 45,
+                                ),
+                              ],
+                            ),
                           ),
-                          // const SizedBox(
-                          //   height: 12,
-                          // ),
-                          Image.asset(
-                            "assets/images/950.png",
-                            fit: BoxFit.cover,
-                            width: 120,
-                            height: 40,
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => ListProductScreen(
+                                          title: "iphone",
+                                        )),
+                              );
+                            },
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Image.asset(
+                                  "assets/images/iphone10.png",
+                                  width: 200,
+                                  height: 200,
+                                ),
+                                // const SizedBox(
+                                //   height: 12,
+                                // ),
+                                Image.asset(
+                                  "assets/images/950.png",
+                                  fit: BoxFit.cover,
+                                  width: 120,
+                                  height: 45,
+                                ),
+                              ],
+                            ),
                           ),
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => ListProductScreen(
+                                          title: "camera",
+                                        )),
+                              );
+                            },
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Image.asset(
+                                  "assets/images/camera_60d.png",
+                                  width: 200,
+                                  height: 200,
+                                ),
+                                // const SizedBox(
+                                //   height: 12,
+                                // ),
+                                Image.asset(
+                                  "assets/images/950.png",
+                                  fit: BoxFit.cover,
+                                  width: 120,
+                                  height: 45,
+                                ),
+                              ],
+                            ),
+                          )
                         ],
                       ),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Image.asset(
-                            "assets/images/iphone10.png",
-                            width: 200,
-                            height: 200,
+                      Align(
+                        alignment: Alignment.centerRight,
+                        child: GestureDetector(
+                          onTap: () {
+                            if ((controller.page ?? 0).toInt() <= 1) {
+                              controller.animateToPage(
+                                  (controller.page ?? 0).toInt() + 1,
+                                  duration: Duration(milliseconds: 500),
+                                  curve: Curves.ease);
+                            }
+                          },
+                          child: Container(
+                            width: 36,
+                            height: 36,
+                            alignment: Alignment.center,
+                            margin: const EdgeInsets.only(right: 12),
+                            decoration: const BoxDecoration(
+                                shape: BoxShape.circle, color: Colors.white),
+                            child: Icon(
+                              Icons.arrow_forward_ios_rounded,
+                              color: Colors.grey,
+                              size: 20,
+                            ),
                           ),
-                          // const SizedBox(
-                          //   height: 12,
-                          // ),
-                          Image.asset(
-                            "assets/images/950.png",
-                            fit: BoxFit.cover,
-                            width: 120,
-                            height: 40,
-                          ),
-                        ],
-                      ),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Image.asset(
-                            "assets/images/camera_60d.png",
-                            width: 200,
-                            height: 200,
-                          ),
-                          // const SizedBox(
-                          //   height: 12,
-                          // ),
-                          Image.asset(
-                            "assets/images/950.png",
-                            fit: BoxFit.cover,
-                            width: 120,
-                            height: 40,
-                          ),
-                        ],
+                        ),
                       )
                     ],
                   ),

@@ -12,7 +12,7 @@ class MyScreen extends StatefulWidget {
 class _MyScreenState extends State<MyScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       backgroundColor: Color.fromARGB(255, 211, 233, 239),
     );
   }
