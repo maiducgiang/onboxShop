@@ -1,8 +1,8 @@
-import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:onbox_shop/ui/home/home.dart';
+import 'package:onbox_shop/ui/list_product/list_product_screen.dart';
 import 'package:onbox_shop/ui/my/my.dart';
+import 'package:onbox_shop/ui/open_box/open_box.dart';
 import 'package:onbox_shop/ui/shop/shop.dart';
 import 'package:onbox_shop/ui/splash/splash_screen.dart';
 import 'package:onbox_shop/ui/warehouse/warehouse.dart';
@@ -38,8 +38,8 @@ class _MyHomePageState extends State<MyHomePage> {
   var tabIndex = 0;
 
   final _screenList = [
-    HomeScreen(),
     ShopScreen(),
+    ListProductScreen(),
     Container(
       color: Colors.amber,
     ),
@@ -60,23 +60,53 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       body: getScreen(),
       backgroundColor: Colors.white,
-      floatingActionButton: Container(
-        height: 80,
-        width: 80,
-        padding: EdgeInsets.all(2),
-        decoration: BoxDecoration(shape: BoxShape.circle, color: Colors.white),
-        child: FloatingActionButton(
-          backgroundColor: Color(0xffFFA502),
-          onPressed: () {
-            changeTabIndex(2);
-          },
-          elevation: 0,
-          child: Container(
-            margin: EdgeInsets.all(2),
-            // color: Color(0xffFFA502),
-            child: SvgPicture.asset(
-              "assets/images/icon3.svg",
-              height: 42,
+      floatingActionButton: GestureDetector(
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => OpenBox()),
+          );
+          // changeTabIndex(2);
+        },
+        child: Container(
+          height: 80,
+          width: 80,
+          padding: EdgeInsets.all(2),
+          decoration: const BoxDecoration(
+              // gradient: LinearGradient(
+              //     colors: [
+              //       Color(0xffFF157E),
+              //       Color(0xffFFAC01),
+
+              //       //add more colors for gradient
+              //     ],
+              //     begin: Alignment.topLeft, //begin of the gradient color
+              //     end: Alignment.bottomRight, //end of the gradient color
+              //     stops: [
+              //       0.5,
+              //       0.8,
+              //     ] //stops for individual color
+              //     //set the stops number equal to numbers of color
+              //     ),
+              shape: BoxShape.circle,
+              color: Colors.white),
+          child: FloatingActionButton(
+            backgroundColor: Color(0xffFFA502),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => OpenBox()),
+              );
+              // changeTabIndex(2);
+            },
+            elevation: 0,
+            child: Container(
+              margin: EdgeInsets.all(2),
+              // color: Color(0xffFFA502),
+              child: SvgPicture.asset(
+                "assets/images/icon3.svg",
+                height: 42,
+              ),
             ),
           ),
         ),

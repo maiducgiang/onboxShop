@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'list_product_state.dart';
+part of 'open_box_state.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,22 +15,22 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$ListProductState {
+mixin _$OpenBoxState {
   bool get isLoading => throw _privateConstructorUsedError;
   List<String> get listtitle => throw _privateConstructorUsedError;
   List<bool> get listStatusTitle => throw _privateConstructorUsedError;
   List<ProductModel> get listProduct => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $ListProductStateCopyWith<ListProductState> get copyWith =>
+  $OpenBoxStateCopyWith<OpenBoxState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ListProductStateCopyWith<$Res> {
-  factory $ListProductStateCopyWith(
-          ListProductState value, $Res Function(ListProductState) then) =
-      _$ListProductStateCopyWithImpl<$Res, ListProductState>;
+abstract class $OpenBoxStateCopyWith<$Res> {
+  factory $OpenBoxStateCopyWith(
+          OpenBoxState value, $Res Function(OpenBoxState) then) =
+      _$OpenBoxStateCopyWithImpl<$Res, OpenBoxState>;
   @useResult
   $Res call(
       {bool isLoading,
@@ -40,9 +40,9 @@ abstract class $ListProductStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ListProductStateCopyWithImpl<$Res, $Val extends ListProductState>
-    implements $ListProductStateCopyWith<$Res> {
-  _$ListProductStateCopyWithImpl(this._value, this._then);
+class _$OpenBoxStateCopyWithImpl<$Res, $Val extends OpenBoxState>
+    implements $OpenBoxStateCopyWith<$Res> {
+  _$OpenBoxStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -79,11 +79,11 @@ class _$ListProductStateCopyWithImpl<$Res, $Val extends ListProductState>
 }
 
 /// @nodoc
-abstract class _$$_ListProductStateCopyWith<$Res>
-    implements $ListProductStateCopyWith<$Res> {
-  factory _$$_ListProductStateCopyWith(
-          _$_ListProductState value, $Res Function(_$_ListProductState) then) =
-      __$$_ListProductStateCopyWithImpl<$Res>;
+abstract class _$$_OpenBoxStateCopyWith<$Res>
+    implements $OpenBoxStateCopyWith<$Res> {
+  factory _$$_OpenBoxStateCopyWith(
+          _$_OpenBoxState value, $Res Function(_$_OpenBoxState) then) =
+      __$$_OpenBoxStateCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -94,11 +94,11 @@ abstract class _$$_ListProductStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ListProductStateCopyWithImpl<$Res>
-    extends _$ListProductStateCopyWithImpl<$Res, _$_ListProductState>
-    implements _$$_ListProductStateCopyWith<$Res> {
-  __$$_ListProductStateCopyWithImpl(
-      _$_ListProductState _value, $Res Function(_$_ListProductState) _then)
+class __$$_OpenBoxStateCopyWithImpl<$Res>
+    extends _$OpenBoxStateCopyWithImpl<$Res, _$_OpenBoxState>
+    implements _$$_OpenBoxStateCopyWith<$Res> {
+  __$$_OpenBoxStateCopyWithImpl(
+      _$_OpenBoxState _value, $Res Function(_$_OpenBoxState) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -109,7 +109,7 @@ class __$$_ListProductStateCopyWithImpl<$Res>
     Object? listStatusTitle = null,
     Object? listProduct = null,
   }) {
-    return _then(_$_ListProductState(
+    return _then(_$_OpenBoxState(
       isLoading: null == isLoading
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
@@ -132,8 +132,8 @@ class __$$_ListProductStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ListProductState implements _ListProductState {
-  const _$_ListProductState(
+class _$_OpenBoxState implements _OpenBoxState {
+  const _$_OpenBoxState(
       {required this.isLoading,
       required final List<String> listtitle,
       required final List<bool> listStatusTitle,
@@ -170,14 +170,14 @@ class _$_ListProductState implements _ListProductState {
 
   @override
   String toString() {
-    return 'ListProductState(isLoading: $isLoading, listtitle: $listtitle, listStatusTitle: $listStatusTitle, listProduct: $listProduct)';
+    return 'OpenBoxState(isLoading: $isLoading, listtitle: $listtitle, listStatusTitle: $listStatusTitle, listProduct: $listProduct)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ListProductState &&
+            other is _$_OpenBoxState &&
             (identical(other.isLoading, isLoading) ||
                 other.isLoading == isLoading) &&
             const DeepCollectionEquality()
@@ -199,16 +199,16 @@ class _$_ListProductState implements _ListProductState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ListProductStateCopyWith<_$_ListProductState> get copyWith =>
-      __$$_ListProductStateCopyWithImpl<_$_ListProductState>(this, _$identity);
+  _$$_OpenBoxStateCopyWith<_$_OpenBoxState> get copyWith =>
+      __$$_OpenBoxStateCopyWithImpl<_$_OpenBoxState>(this, _$identity);
 }
 
-abstract class _ListProductState implements ListProductState {
-  const factory _ListProductState(
+abstract class _OpenBoxState implements OpenBoxState {
+  const factory _OpenBoxState(
       {required final bool isLoading,
       required final List<String> listtitle,
       required final List<bool> listStatusTitle,
-      required final List<ProductModel> listProduct}) = _$_ListProductState;
+      required final List<ProductModel> listProduct}) = _$_OpenBoxState;
 
   @override
   bool get isLoading;
@@ -220,6 +220,6 @@ abstract class _ListProductState implements ListProductState {
   List<ProductModel> get listProduct;
   @override
   @JsonKey(ignore: true)
-  _$$_ListProductStateCopyWith<_$_ListProductState> get copyWith =>
+  _$$_OpenBoxStateCopyWith<_$_OpenBoxState> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -53,19 +53,19 @@ class _DetailProductScreenState extends State<DetailProductScreen> {
                                     visible: widget.productModel != null,
                                     child: SizedBox(
                                       height: 400,
-                                      // child: FittedBox(
-                                      //   fit: BoxFit.cover,
-                                      //   child: CachedNetworkImage(
-                                      //     progressIndicatorBuilder:
-                                      //         (context, url, progress) =>
-                                      //             Center(
-                                      //       child: CircularProgressIndicator(
-                                      //         value: progress.progress,
-                                      //       ),
-                                      //     ),
-                                      //     imageUrl: widget.productModel.image,
-                                      //   ),
-                                      // ),
+                                      child: FittedBox(
+                                        fit: BoxFit.cover,
+                                        child: CachedNetworkImage(
+                                          progressIndicatorBuilder:
+                                              (context, url, progress) =>
+                                                  Center(
+                                            child: CircularProgressIndicator(
+                                              value: progress.progress,
+                                            ),
+                                          ),
+                                          imageUrl: widget.productModel.image,
+                                        ),
+                                      ),
                                     ),
                                   );
                                 }),
@@ -100,11 +100,11 @@ class _DetailProductScreenState extends State<DetailProductScreen> {
                                 child: Text(
                                   widget.productModel.name,
                                   maxLines: 2,
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                       fontSize: 21,
                                       // height: 0.4,
                                       letterSpacing: 0.4,
-                                      color: Colors.white,
+                                      color: Colors.black,
                                       fontWeight: FontWeight.w400),
                                 )),
                             const SizedBox(
@@ -117,13 +117,13 @@ class _DetailProductScreenState extends State<DetailProductScreen> {
                                     visible: widget.productModel != null,
                                     child: Text(
                                       Utils.vndFormat(
-                                          widget.productModel!.price),
+                                          widget.productModel.price),
                                       // "${formatCurrency(controller.productModel.value!.price.toDouble())} đ",
                                       maxLines: 2,
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                           fontSize: 28,
                                           letterSpacing: 0.4,
-                                          color: Colors.white,
+                                          color: Color(0xffFF4757),
                                           fontWeight: FontWeight.w700),
                                     )),
                                 GestureDetector(
@@ -157,9 +157,12 @@ class _DetailProductScreenState extends State<DetailProductScreen> {
                       //   height: 12,
                       // ),
                       Container(
-                        height: 500,
-                        margin: const EdgeInsets.symmetric(
-                            horizontal: 12, vertical: 16),
+                        // height: 500,
+                        padding: const EdgeInsets.only(
+                          bottom: 200,
+                        ),
+                        margin:
+                            EdgeInsets.symmetric(horizontal: 12, vertical: 16),
                         decoration: const BoxDecoration(
                             color: Colors.white,
                             borderRadius: BorderRadius.only(
@@ -167,13 +170,46 @@ class _DetailProductScreenState extends State<DetailProductScreen> {
                                 topRight: Radius.circular(16))),
                         child: Column(
                           children: [
-                            SizedBox(
+                            const SizedBox(
                               height: 12,
                             ),
                             Container(
                               padding: EdgeInsets.symmetric(horizontal: 18),
                               child: Text(
-                                widget.productModel!.detail,
+                                widget.productModel.detail,
+                                style: TextStyle(
+                                    color: Color(0xff4F4F4F),
+                                    fontSize: 16,
+                                    height: 1.7,
+                                    fontWeight: FontWeight.w400,
+                                    letterSpacing: 0.4),
+                              ),
+                            ),
+                            const SizedBox(
+                              height: 8,
+                            ),
+                            SizedBox(
+                              height: 350,
+                              child: FittedBox(
+                                fit: BoxFit.cover,
+                                child: CachedNetworkImage(
+                                  progressIndicatorBuilder:
+                                      (context, url, progress) => Center(
+                                    child: CircularProgressIndicator(
+                                      value: progress.progress,
+                                    ),
+                                  ),
+                                  imageUrl: widget.productModel.image,
+                                ),
+                              ),
+                            ),
+                            const SizedBox(
+                              height: 8,
+                            ),
+                            Container(
+                              padding: EdgeInsets.symmetric(horizontal: 18),
+                              child: Text(
+                                widget.productModel.detail,
                                 style: TextStyle(
                                     color: Color(0xff4F4F4F),
                                     fontSize: 16,

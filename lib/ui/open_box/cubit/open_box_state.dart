@@ -1,16 +1,16 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:onbox_shop/data/product/product.dart';
 
-part 'list_product_state.freezed.dart';
+part 'open_box_state.freezed.dart';
 
 @freezed
-class ListProductState with _$ListProductState {
-  const factory ListProductState(
+class OpenBoxState with _$OpenBoxState {
+  const factory OpenBoxState(
       {required bool isLoading,
       required List<String> listtitle,
       required List<bool> listStatusTitle,
-      required List<ProductModel> listProduct}) = _ListProductState;
+      required List<ProductModel> listProduct}) = _OpenBoxState;
 
-  factory ListProductState.initial() => const ListProductState(
+  factory OpenBoxState.initial() => const OpenBoxState(
       isLoading: false, listStatusTitle: [], listtitle: [], listProduct: []);
 }

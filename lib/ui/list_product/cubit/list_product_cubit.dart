@@ -19,55 +19,82 @@ class ListProductCubit extends Cubit<ListProductState> {
     List<ProductModel> listProductResponse = (data['products'] as List)
         .map((item) => ProductModel.fromJson(item))
         .toList();
-
+    if (title.contains("camera")) {
+      listProductResponse =
+          listProductResponse.where((element) => element.role == "1").toList();
+    }
+    if (title.contains("laptop")) {
+      listProductResponse =
+          listProductResponse.where((element) => element.role == "2").toList();
+    }
+    if (title.contains("iphone")) {
+      listProductResponse =
+          listProductResponse.where((element) => element.role == "3").toList();
+    }
+    if (title == null || title == "") {
+      emit(state.copyWith(listtitle: [
+        "all",
+        "laptop",
+        "camera",
+        "iphone"
+      ], listStatusTitle: [
+        true,
+        false,
+        false,
+        false,
+      ]));
+    }
     emit(state.copyWith(listProduct: listProductResponse));
-    // if (title.value == "Mẹ bầu") {
-    //   listProduct.value = listProductResponse
-    //       .where((element) =>
-    //           element.role == "1" ||
-    //           element.role == "2" ||
-    //           element.role == "3" ||
-    //           element.role == "4" ||
-    //           element.role == "5")
-    //       .toList();
-    //   listtitle.value = [
-    //     "all",
-    //     "Sữa cho mẹ bầu",
-    //     "Vitamin",
-    //     "Quần áo",
-    //     "Máy hút sữa",
-    //     "Túi trữ sữa"
-    //   ];
-    //   listStatusTitle.value = [true, false, false, false, false, false];
-    // }
-    // if (title.value == "Bé trai") {
-    //   listProduct.value =
-    //       listProductResponse.where((element) => element.role == "6").toList();
+  }
 
-    //   // listtitle.value = [
-    //   //   "all",
-    //   // ];
-    //   // listStatusTitle.value = [true];
-    // }
-    // if (title.value == "Bé gái") {
-    //   listProduct.value =
-    //       listProductResponse.where((element) => element.role == "7").toList();
-    //   //  listtitle.value = [
-    //   //     "all",
-    //   //   ];
-    //   //   listStatusTitle.value = [true];
-    // }
-    // if (title.value == "Khác") {
-    //   listProduct.value =
-    //       listProductResponse.where((element) => element.role == "8").toList();
-    //   //  listtitle.value = [
-    //   //     "all",
-    //   //   ];
-    //   //   listStatusTitle.value = [true];
-    // }
-    // if (title.value == "Tất cả") {
-    //   listProduct.value = listProductResponse;
-    // }
-    // super.onInit();
+  void selectTitle(String title) async {
+    List<bool> listStatus2 = List.from(state.listStatusTitle);
+    for (int i = 0; i < state.listtitle.length; i++) {
+      if (state.listtitle[i] == title) {
+        listStatus2[i] = !listStatus2[i];
+        // data1.inse;
+        // data1.insert(i, !state.listStatusTitle[i]);
+
+        emit(state.copyWith(listStatusTitle: listStatus2));
+      }
+    }
+    String jsonString =
+        await rootBundle.loadString('assets/product_master_data.json');
+
+    // Decode the JSON into a Dart list
+    Map<String, dynamic> data = json.decode(jsonString);
+
+    List<ProductModel> listProductResponse = (data['products'] as List)
+        .map((item) => ProductModel.fromJson(item))
+        .toList();
+    if (state.listStatusTitle[0] == true) {
+      var data = listProductResponse
+          .where((element) =>
+              element.role == "1" ||
+              element.role == "2" ||
+              element.role == "3" ||
+              element.role == "4" ||
+              element.role == "5")
+          .toList();
+      emit(state.copyWith(listProduct: data));
+    } else {
+      List<ProductModel> dataList = [];
+      if (state.listStatusTitle[1] == true) {
+        dataList.addAll(listProductResponse
+            .where((element) => element.role == "2")
+            .toList());
+      }
+      if (state.listStatusTitle[2] == true) {
+        dataList.addAll(listProductResponse
+            .where((element) => element.role == "1")
+            .toList());
+      }
+      if (state.listStatusTitle[3] == true) {
+        dataList.addAll(listProductResponse
+            .where((element) => element.role == "3")
+            .toList());
+      }
+      emit(state.copyWith(listProduct: dataList));
+    }
   }
 }

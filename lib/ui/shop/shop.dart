@@ -3,12 +3,20 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:onbox_shop/ui/list_product/list_product_screen.dart';
+import 'package:onbox_shop/ui/open_box/open_box.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ShopScreen extends StatefulWidget {
   const ShopScreen({super.key});
 
   @override
   State<ShopScreen> createState() => _ShopScreenState();
+}
+
+Future<void> _makePhoneCall() async {
+  print("giang");
+  await launch('tel:${0374168445}');
+  print("giang");
 }
 
 class _ShopScreenState extends State<ShopScreen> {
@@ -35,16 +43,21 @@ class _ShopScreenState extends State<ShopScreen> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      Container(
-                        width: 50,
-                        height: 50,
-                        padding: const EdgeInsets.all(10),
-                        decoration: const BoxDecoration(
-                            shape: BoxShape.circle, color: Colors.white),
-                        child: SvgPicture.asset(
-                          "assets/images/help.svg",
-                          height: 20,
-                          width: 20,
+                      GestureDetector(
+                        onTap: () {
+                          _makePhoneCall();
+                        },
+                        child: Container(
+                          width: 50,
+                          height: 50,
+                          padding: const EdgeInsets.all(10),
+                          decoration: const BoxDecoration(
+                              shape: BoxShape.circle, color: Colors.white),
+                          child: SvgPicture.asset(
+                            "assets/images/help.svg",
+                            height: 20,
+                            width: 20,
+                          ),
                         ),
                       ),
                       const SizedBox(
@@ -196,17 +209,41 @@ class _ShopScreenState extends State<ShopScreen> {
                     itemImage(
                         path: 'assets/images/computer.png',
                         title: "Computer",
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => ListProductScreen(
+                                      title: "laptop",
+                                    )),
+                          );
+                        },
                         size: 90),
                     itemImage(
                         path: 'assets/images/camera.png',
                         title: "Camera",
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => ListProductScreen(
+                                      title: "camera",
+                                    )),
+                          );
+                        },
                         size: 100),
                     itemImage(
                         path: 'assets/images/iphone.png',
                         title: "Phone",
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => ListProductScreen(
+                                      title: "iphone",
+                                    )),
+                          );
+                        },
                         size: 90),
                     const SizedBox(
                       width: 1,
@@ -216,14 +253,22 @@ class _ShopScreenState extends State<ShopScreen> {
                 const SizedBox(
                   height: 24,
                 ),
-                Container(
-                  alignment: Alignment.center,
-                  height: 100,
-                  child: Image.asset(
-                    "assets/images/button.png",
-                    width: 200,
-                    height: 200,
-                    fit: BoxFit.contain,
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => OpenBox()),
+                    );
+                  },
+                  child: Container(
+                    alignment: Alignment.center,
+                    height: 100,
+                    child: Image.asset(
+                      "assets/images/button.png",
+                      width: 200,
+                      height: 200,
+                      fit: BoxFit.contain,
+                    ),
                   ),
                 )
               ],
